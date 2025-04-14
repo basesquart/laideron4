@@ -25,34 +25,12 @@
       margin-top: 20px;
     }
 
-    #fleurs {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .fleur {
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      animation: tomber 10s linear infinite;
-    }
-
-    @keyframes tomber {
-      to {
-        transform: translateY(100vh);
-      }
-    }
   </style>
 </head>
 <body>
 
-  <h1>Bienvenue sur le site secret...</h1>
-  <p>Mais une question s’impose... <strong>Qui es-tu ?</strong></p>
+  <h1>Comment t'as fais pour être la wshhh?</h1>
+  <p>Il y'a un très gros secret ici, tu sais mais je peux le dire qu'a un esuele personne...<strong>Qui es-tu ?</strong></p>
 
   <input type="text" id="prenom" placeholder="Entre ton prénom ici">
   <br>
@@ -66,25 +44,41 @@
       if (nom === "yse") {
         window.location.href = "quiz.html";
       } else {
-        alert("Tu n’es pas Yse !");
+        alert("J'accepte que les laiderons dsl");
         window.close();
       }
     }
 
-    function genererFleurs() {
-      const conteneur = document.getElementById("fleurs");
-      for (let i = 0; i < 30; i++) {
-        const fleur = document.createElement("img");
-        fleur.src = "https://i.imgur.com/NXqN9wv.png"; // petite fleur mignonne
-        fleur.className = "fleur";
-        fleur.style.left = Math.random() * 100 + "vw";
-        fleur.style.top = Math.random() * -100 + "px";
-        fleur.style.animationDuration = 5 + Math.random() * 5 + "s";
-        conteneur.appendChild(fleur);
-      }
+  function playMusic() {
+      const music = document.getElementById("bg-music");
+      music.play().catch(() => {
+        console.log("Lecture automatique bloquée par le navigateur.");
+      });
     }
 
-    genererFleurs();
+    function generateFlowers() {
+      const emojis = ["🌸", "🌺", "💮", "🌷", "🌹"];
+      setInterval(() => {
+        const flower = document.createElement("div");
+        flower.classList.add("flower");
+        flower.style.left = Math.random() * 100 + "vw";
+        flower.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+        document.body.appendChild(flower);
+        setTimeout(() => flower.remove(), 10000);
+      }, 300);
+    }
+
+    window.onload = checkAccess;
+  </script>
+</head>
+
+<body>
+  <audio id="bg-music" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
+    Ton navigateur ne supporte pas l’audio HTML5.
+  </audio>      
+
+  
   </script>
 
 </body>
