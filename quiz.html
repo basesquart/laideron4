@@ -2,12 +2,12 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Es-tu vraiment Yse ?</title>
-  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+  <title>Le test ultime d'Yse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Patrick Hand', cursive;
-      background: linear-gradient(to right, #ffd6e0, #ffe6f0);
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #ffe6f0, #ffccda);
       text-align: center;
       padding: 30px;
       color: #b30059;
@@ -15,11 +15,10 @@
 
     h1 {
       font-size: 2.5em;
-      margin-bottom: 20px;
     }
 
     .question {
-      margin: 30px 0;
+      margin: 40px 0;
     }
 
     .options button {
@@ -30,7 +29,7 @@
       font-size: 1em;
       border-radius: 10px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: 0.3s;
     }
 
     .options button:hover {
@@ -39,10 +38,10 @@
     }
 
     img {
-      width: 150px;
+      width: 180px;
       height: auto;
       border-radius: 10px;
-      margin-top: 10px;
+      margin: 10px;
     }
 
     #result {
@@ -77,14 +76,24 @@
         transform: translateY(100vh) rotate(360deg);
       }
     }
+
+    #music {
+      display: none;
+    }
   </style>
 </head>
 <body>
 
-  <h1>Es-tu VRAIMENT Yse ?</h1>
+  <h1>Es-tu vraiment Yse ?</h1>
+
+  <audio autoplay loop id="music">
+    <source src="https://cdn.pixabay.com/audio/2023/03/01/audio_ea59f55be0.mp3" type="audio/mpeg">
+    Ton navigateur ne supporte pas la musique.
+  </audio>
 
   <div class="question" id="q1">
     <p>Quel est ton animal totem ?</p>
+    <img src="https://i.imgur.com/Z0gvfUu.png" alt="rat rigolo">
     <div class="options">
       <button onclick="fail()">Le chat</button>
       <button onclick="fail()">Le pâté en boîte</button>
@@ -94,22 +103,26 @@
 
   <div class="question hidden" id="q2">
     <p>Avec quel homme pourrais-tu te mettre en couple ?</p>
-    <img src="https://i.imgur.com/3jLPB46.png" alt="homme viril"><br>
-    <button onclick="fail()">Cet homme viril</button><br><br>
-    <img src="https://i.imgur.com/x9q5aFp.png" alt="homme gay"><br>
-    <button onclick="next('q2', 'q3')">Cet homme gay</button><br><br>
+    <img src="https://i.imgur.com/3jLPB46.png" alt="homme viril">
+    <br><button onclick="fail()">Cet homme viril</button><br><br>
+    <img src="https://i.imgur.com/x9q5aFp.png" alt="homme gay">
+    <br><button onclick="next('q2', 'q3')">Cet homme gay</button><br><br>
     <button onclick="fail()">Louis Fortin</button>
   </div>
 
   <div class="question hidden" id="q3">
     <p>Quelle est ta destination de rêve ?</p>
-    <button onclick="fail()">Un voyage uniquement avec Olive</button>
-    <button onclick="next('q3', 'result')">La Turquie</button>
-    <button onclick="fail()">Le cœur de Agathe</button>
+    <img src="https://i.imgur.com/lZZrPty.png" alt="turquie romantique">
+    <div class="options">
+      <button onclick="fail()">Un voyage uniquement avec Olive</button>
+      <button onclick="next('q3', 'result')">La Turquie</button>
+      <button onclick="fail()">Le cœur de Agathe</button>
+    </div>
   </div>
 
   <div class="hidden" id="result">
-    <p>BRAVO YSE !! Tu es toi-même... Tu peux maintenant pleurer de joie.</p>
+    <p>BRAVO YSE !!! Tu es bien toi, la vraie, l’unique, la star du love.</p>
+    <p>Ce site est à toi. On t’aime. Maintenant fais des bisous à ton écran.</p>
     <div class="confetti" id="confetti-container"></div>
   </div>
 
@@ -122,7 +135,7 @@
     }
 
     function fail() {
-      alert("Non non non… tu n'es pas Yse. Le site va se fermer !");
+      alert("OUTCH ! Mauvaise réponse... le site va se fermer !");
       window.close();
     }
 
