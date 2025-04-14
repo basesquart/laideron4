@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>es tu rm yse?</title>
+  <title>Es-tu vraiment Ysé ?</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <style>
     body {
@@ -11,6 +11,7 @@
       text-align: center;
       padding: 30px;
       color: #b30059;
+      overflow-x: hidden;
     }
 
     h1 {
@@ -84,11 +85,11 @@
 </head>
 <body>
 
-  <h1>Es-tu vraiment Yse ?</h1>
+  <h1>Es-tu vraiment Ysé ?</h1>
 
   <audio autoplay loop id="music">
     <source src="https://cdn.pixabay.com/audio/2023/03/01/audio_ea59f55be0.mp3" type="audio/mpeg">
-    Ton navigateur ne supporte pas la musique.
+    Ton navigateur ne supporte pas l'audio.
   </audio>
 
   <div class="question" id="q1">
@@ -102,11 +103,13 @@
 
   <div class="question hidden" id="q2">
     <p>Avec quel homme pourrais-tu te mettre en couple ?</p>
-    <img src="https://i.imgur.com/P5QXZcx.png" alt="homme viril"
-    <br><button onclick="fail()">Cet homme viril</button><br><br>
-    <img src="https://imgur.com/Zx51hno" alt="homme gay">
-    <br><button onclick="next('q2', 'q3')">les hommes gay</button><br><br>
-    <button onclick="fail()">Louis Fortin</button 
+    <img src="https://i.imgur.com/P5QXZcx.png" alt="homme viril">
+    <div class="options">
+      <button onclick="fail()">Cet homme viril</button>
+      <img src="https://i.imgur.com/Zx51hno.jpg" alt="homme gay">
+      <button onclick="next('q2', 'q3')">Les hommes gay</button>
+      <button onclick="fail()">Louis Fortin</button>
+    </div>
   </div>
 
   <div class="question hidden" id="q3">
@@ -120,8 +123,8 @@
   </div>
 
   <div class="hidden" id="result">
-    <p>OUI, tu es bien Ysé.</p>
-    <p>Mais je ne suis pas encore tres sur....</p>
+    <p>OUI, tu es bien Ysé 💖</p>
+    <p>Mais je ne suis pas encore très sûre... 😏</p>
     <div class="confetti" id="confetti-container"></div>
   </div>
 
@@ -134,8 +137,8 @@
     }
 
     function fail() {
-      alert("FAUX VOUS N4ETES PAS YSE ");
-      window.close();
+      alert("FAUX ! VOUS N’ÊTES PAS YSÉ 😡");
+      window.close(); // Ne fonctionne pas sur tous les navigateurs
     }
 
     function launchConfetti() {
@@ -151,6 +154,5 @@
       }
     }
   </script>
-
 </body>
 </html>
