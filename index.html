@@ -2,138 +2,90 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Joyeux Anniversaire Yse !</title>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
-
+  <title>Bienvenue !</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: 'Great Vibes', cursive;
-      background: linear-gradient(to right, #ffccd5, #ffe6eb);
-      color: #b30059;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #ffe6f0, #ffccda);
       text-align: center;
-      padding: 50px;
-      overflow: hidden;
-    }
-
-    #content {
-      display: none;
-      opacity: 0;
-      transition: opacity 1.5s ease-in-out;
-    }
-
-    #content.show {
-      display: block;
-      opacity: 1;
+      padding: 100px 20px;
+      color: #b30059;
     }
 
     h1 {
-      font-size: 3em;
-      margin-bottom: 20px;
-      color: #ff4d88;
-      text-shadow: 1px 1px #fff;
+      font-size: 2.5em;
     }
 
-    p {
-      font-size: 1.5em;
+    input, button {
+      padding: 10px 15px;
+      font-size: 1em;
+      border-radius: 8px;
+      border: none;
+      margin-top: 20px;
     }
 
-    .heart {
-      font-size: 3em;
-      animation: heartbeat 1s infinite;
-      color: #ff1a75;
-      margin: 20px 0;
-    }
-
-    @keyframes heartbeat {
-      0%, 100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.2);
-      }
-    }
-
-    .footer {
-      margin-top: 50px;
-      font-size: 1.2em;
-      color: #cc0066;
-    }
-
-    .flower {
+    #fleurs {
       position: fixed;
-      top: -50px;
-      font-size: 2em;
-      animation: fall 10s linear infinite;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
+      z-index: -1;
     }
 
-    @keyframes fall {
-      0% {
-        transform: translateY(-50px) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(100vh) rotate(360deg);
-        opacity: 0;
-      }
+    .fleur {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      animation: tomber 10s linear infinite;
     }
 
-    audio {
-      display: none;
+    @keyframes tomber {
+      to {
+        transform: translateY(100vh);
+      }
     }
   </style>
+</head>
+<body>
+
+  <h1>Bienvenue sur le site secret...</h1>
+  <p>Mais une question s’impose... <strong>Qui es-tu ?</strong></p>
+
+  <input type="text" id="prenom" placeholder="Entre ton prénom ici">
+  <br>
+  <button onclick="verifier()">Entrer</button>
+
+  <div id="fleurs"></div>
 
   <script>
-    function checkAccess() {
-      const inputName = prompt("wsh t qui met ton prenom");
-      if (inputName && inputName.toLowerCase() === "yse") {
-        document.getElementById("content").classList.add("show");
-        playMusic();
-        generateFlowers();
+    function verifier() {
+      const nom = document.getElementById("prenom").value.toLowerCase().trim();
+      if (nom === "yse") {
+        window.location.href = "quiz.html";
       } else {
-        alert("Accès refusé, dsl on accepte que les laiderons dans la team !");
-        location.reload();
+        alert("Tu n’es pas Yse !");
+        window.close();
       }
     }
 
-    function playMusic() {
-      const music = document.getElementById("bg-music");
-      music.play().catch(() => {
-        console.log("Lecture automatique bloquée par le navigateur.");
-      });
+    function genererFleurs() {
+      const conteneur = document.getElementById("fleurs");
+      for (let i = 0; i < 30; i++) {
+        const fleur = document.createElement("img");
+        fleur.src = "https://i.imgur.com/NXqN9wv.png"; // petite fleur mignonne
+        fleur.className = "fleur";
+        fleur.style.left = Math.random() * 100 + "vw";
+        fleur.style.top = Math.random() * -100 + "px";
+        fleur.style.animationDuration = 5 + Math.random() * 5 + "s";
+        conteneur.appendChild(fleur);
+      }
     }
 
-    function generateFlowers() {
-      const emojis = ["🌸", "🌺", "💮", "🌷", "🌹"];
-      setInterval(() => {
-        const flower = document.createElement("div");
-        flower.classList.add("flower");
-        flower.style.left = Math.random() * 100 + "vw";
-        flower.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-        document.body.appendChild(flower);
-        setTimeout(() => flower.remove(), 10000);
-      }, 300);
-    }
-
-    window.onload = checkAccess;
+    genererFleurs();
   </script>
-</head>
 
-<body>
-  <audio id="bg-music" loop>
-    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
-    Ton navigateur ne supporte pas l’audio HTML5.
-  </audio>
-
-  <div id="content">
-    <h1>Joyeux Anniversaire Yse !</h1>
-    <div class="heart">❤️</div>
-    <p>TU ES GRANDE AUJOURD4HUI.<br>
-  
-    <div class="footer">Ysé j'ai quelque chose d'important a te dire..... Mais es-ce bien toi?</div>
-  </div>
 </body>
 </html>
-<a href="quiz.htlm"><button>Ysé c toi mon bbw?</button></a>a>
