@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Anniversaire de Yse</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+    }
+    /* Le contenu est caché par défaut */
+    #content {
+      display: none;
+    }
+  </style>
+  <script>
+    function checkAccess() {
+      // Demande à l'utilisateur son prénom
+      const inputName = prompt("Veuillez entrer votre prénom:");
+      // Vérifie si le prénom est "yse" (en minuscule pour être insensible à la casse)
+      if (inputName && inputName.toLowerCase() === "yse") {
+        // Affiche le contenu du site
+        document.getElementById("content").style.display = "block";
+      } else {
+        // Message d'erreur et rechargement de la page
+        alert("Accès refusé. Ce site est réservé aux laiderons.");
+        location.reload();
+      }
+    }
+    // Exécute la vérification dès le chargement de la page
+    window.onload = checkAccess;
+  </script>
+</head>
+<body>
+  <div id="content">
+    <h1>Bienvenue la moche!</h1>
+    <p>Contenu exclusif et personnalisé pour la personne fêtée.</p>
+    <!-- Tu peux ajouter d'autres sections : galerie, message, compte à rebours, etc. -->
+  </div>
+</body>
+</html>
